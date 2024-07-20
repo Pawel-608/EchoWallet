@@ -2,10 +2,51 @@
 <html>
 <head>
     <title>Voice to Text</title>
+  <style>
+    body {
+    margin: 0;
+      padding: 0;
+      background-color: #F2F0E6;
+    }
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .microphone {
+      width: 15vw;
+      cursor: pointer;
+    }
+    .logo {
+      position: absolute;
+      left: 2vw;
+      top: 5vh;
+      width: 15vw;
+    }
+    .container2 {
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      display: flex;
+    }
+  </style>
 </head>
 <body>
-  <button id="startButton">Start Voice Input</button>
-  <div id="output"></div>
+  <img src="static/logo.png" alt="logo" class="logo">
+  <div class="container">
+    <img alt="microphone" src="static/mic.png" class="microphone">
+  </div>
+  <div class="container2">
+    <div class="contacts">
+      <h1>Contacts</h1>
+    </div>
+    <div></div>
+    <div></div>
+  </div>
 
   <script src="./script/ethers.umd.js"></script>
   <script src="./script/Elements.js"></script>

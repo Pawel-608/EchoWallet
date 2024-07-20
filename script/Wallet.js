@@ -1,6 +1,9 @@
 const provider = new ethers.providers.JsonRpcProvider('https://moonbase-alpha.public.blastapi.io');
 
 const privateKey = localStorage.getItem("privateKey");
+if (!privateKey) {
+    alert("Private key not specified")
+}
 const wallet = new ethers.Wallet(privateKey, provider);
 
 const contacts = {

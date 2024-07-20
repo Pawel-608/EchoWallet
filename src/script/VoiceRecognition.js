@@ -59,13 +59,13 @@ function isNumber(value) {
 function parsePerson(transcript, person) {
     transcript = transcript.toLowerCase()
 
-    if (transcript.includes("Pablo")) {
+    if (transcript.includes("pablo")) {
         return "Pablo"
     }
-    if (transcript.includes("Fox")) {
+    if (transcript.includes("fox")) {
         return "Fox"
     }
-    if (transcript.includes("Don")) {
+    if (transcript.includes("don")) {
         return "Don"
     }
 

@@ -1,7 +1,7 @@
 const startButton = document.getElementById('startButton');
 const outputDiv = document.getElementById('output');
 
-const grammar1 = '#JSGF V1.0; grammar names; public <names> = Pablo | Fox | Don;'
+const grammar1 = '#JSGF V1.0; grammar names; public <names> = Pablo | Fox | Dom;'
 const grammar2 = '#JSGF V1.0; grammar dev; public <dev> = Dev;'
 const grammar3 = '#JSGF V1.0; grammar send; public <send> = Send;'
 
@@ -41,7 +41,7 @@ function handleVoiceInput(transcript) {
         console.error(`Connot find amount ${amount} ${transcript}`)
         throw new Error("I don't understand - please repeat again")
     }
-    if (words.length < 5 && !(transcript.includes("Pablo") || transcript.includes("Fox") || transcript.includes("Don"))) {
+    if (words.length < 5 && !(transcript.includes("Pablo") || transcript.includes("Fox") || transcript.includes("Dom"))) {
         console.error(`Transcript too short ${transcript}`)
         throw new Error("I don't understand - please repeat again")
     }
@@ -65,8 +65,8 @@ function parsePerson(transcript, person) {
     if (transcript.includes("fox")) {
         return "Fox"
     }
-    if (transcript.includes("don")) {
-        return "Don"
+    if (transcript.includes("dom")) {
+        return "Dom"
     }
 
     if (person.length == 0) {
@@ -83,7 +83,7 @@ function parsePerson(transcript, person) {
         case "f":
             return "Fox"
         case "d":
-            return "Don"
+            return "Dom"
     }
 
     console.error({person, transcript})

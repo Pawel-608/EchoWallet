@@ -16,13 +16,14 @@ recognition.onstart = () => {
 
 
 recognition.onresult = (event) => {
-  for(const result of event.results) {
-    for(const resultResult of result) {
-      console.log(result[0].transcript)
-    }
-  }
-  
   let transcript = event.results[0][0].transcript;
+
+  
+
+  const words = transcript.split(" ")
+
+  const amount = words.filter(word => isNumber(word))[0]
+  const person = words[words.length - 1]
 
   outputDiv.textContent = transcript;
 };
@@ -34,3 +35,12 @@ recognition.onend = () => {
 startButton.addEventListener('click', () => {
     recognition.start();
 });
+// send 0.5 deaf to Dome
+// send 3.5 def to fill
+
+
+
+
+function isNumber(value) {
+  return !isNaN(parseFloat(value)) && isFinite(value);
+}

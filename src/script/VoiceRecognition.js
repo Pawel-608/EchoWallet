@@ -1,14 +1,16 @@
 const startButton = document.getElementById('startButton');
 const outputDiv = document.getElementById('output');
 
-const grammar = '#JSGF V1.0; grammar blockchain; public <blockchain> = Bitcoin | Ethereum | Polkadot | Cardano | Solana | Chainlink | Binance Smart Chain | Stellar | Tezos | Monero ;';
+const grammar1 = '#JSGF V1.0; grammar names; public <names> = Pablo | Fox | Don;'
+const grammar2 = '#JSGF V1.0; grammar dev; public <dev> = Dev;'
+const grammar3 = '#JSGF V1.0; grammar send; public <send> = Send;'
 
 const recognition = new window.webkitSpeechRecognition();
-recognition.grammars.addFromString(grammar, 1);
+recognition.grammars.addFromString(grammar1, 1);
+recognition.grammars.addFromString(grammar2, 2);
+recognition.grammars.addFromString(grammar3, 3);
 console.log(recognition)
 recognition.lang = 'en-US';
-// recognition.continuous = true;
-// recognition.interimResults = true;
 
 recognition.onstart = () => {
     startButton.textContent = 'Listening...';
@@ -16,16 +18,11 @@ recognition.onstart = () => {
 
 
 recognition.onresult = (event) => {
-  let transcript = event.results[0][0].transcript;
-
-  
-
-  const words = transcript.split(" ")
-
-  const amount = words.filter(word => isNumber(word))[0]
-  const person = words[words.length - 1]
-
-  outputDiv.textContent = transcript;
+    try {
+        handleVoiceInput(event.results[0][0].transcript)
+    } catch (e) {
+        window.alert(e?.message || "Something went wrong")
+    }
 };
 
 recognition.onend = () => {
@@ -35,12 +32,60 @@ recognition.onend = () => {
 startButton.addEventListener('click', () => {
     recognition.start();
 });
-// send 0.5 deaf to Dome
-// send 3.5 def to fill
 
+function handleVoiceInput(transcript) {
+    const words = transcript.split(" ")
+    const amount = words.filter(word => isNumber(word))[0]
 
+    if (!amount)  {
+        console.error(`Connot find amount ${amount} ${transcript}`)
+        throw new Error("I don't understand - please repeat again")
+    }
+    if (words.length < 5 && !(transcript.includes("Pablo") || transcript.includes("Fox") || transcript.includes("Don"))) {
+        console.error(`Transcript too short ${transcript}`)
+        throw new Error("I don't understand - please repeat again")
+    }
 
+    const person = parsePerson(transcript, words[words.length - 1])
+    console.log({amount, person})
+    
+    outputDiv.textContent = transcript;
+}
 
 function isNumber(value) {
-  return !isNaN(parseFloat(value)) && isFinite(value);
+    return !isNaN(parseFloat(value)) && isFinite(value);
+}
+
+function parsePerson(transcript, person) {
+    transcript = transcript.toLowerCase()
+
+    if (transcript.includes("Pablo")) {
+        return "Pablo"
+    }
+    if (transcript.includes("Fox")) {
+        return "Fox"
+    }
+    if (transcript.includes("Don")) {
+        return "Don"
+    }
+
+    if (person.length == 0) {
+        console.error({person, transcript})
+        throw new Error("Cannot identify person - please try once again")
+    }
+    person = person.toLowerCase()
+
+    const personArray = Array.from(person)[0];
+
+    switch (personArray[0]) {
+        case "p":
+            return "Pablo"
+        case "f":
+            return "Fox"
+        case "d":
+            return "Don"
+    }
+
+    console.error({person, transcript})
+    throw new Error("Cannot identify person - please try once again")
 }

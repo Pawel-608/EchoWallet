@@ -1,6 +1,3 @@
-const startButton = document.getElementById('startButton');
-const outputDiv = document.getElementById('output');
-
 const grammar1 = '#JSGF V1.0; grammar names; public <names> = Pablo | Fox | Dom;'
 const grammar2 = '#JSGF V1.0; grammar dev; public <dev> = Dev;'
 const grammar3 = '#JSGF V1.0; grammar send; public <send> = Send;'
@@ -9,7 +6,7 @@ const recognition = new window.webkitSpeechRecognition();
 recognition.grammars.addFromString(grammar1, 1);
 recognition.grammars.addFromString(grammar2, 2);
 recognition.grammars.addFromString(grammar3, 3);
-console.log(recognition)
+
 recognition.lang = 'en-US';
 
 recognition.onstart = () => {
@@ -47,9 +44,8 @@ function handleVoiceInput(transcript) {
     }
 
     const person = parsePerson(transcript, words[words.length - 1])
-    console.log({amount, person})
-    
-    outputDiv.textContent = transcript;
+
+    sendEther(amount, person)
 }
 
 function isNumber(value) {

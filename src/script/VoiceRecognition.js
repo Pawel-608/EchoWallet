@@ -1,10 +1,14 @@
 const startButton = document.getElementById('startButton');
 const outputDiv = document.getElementById('output');
 
+const grammar = '#JSGF V1.0; grammar blockchain; public <blockchain> = Bitcoin | Ethereum | Polkadot | Cardano | Solana | Chainlink | Binance Smart Chain | Stellar | Tezos | Monero ;';
+
 const recognition = new window.webkitSpeechRecognition();
+recognition.grammars.addFromString(grammar, 1);
+console.log(recognition)
 recognition.lang = 'en-US';
 // recognition.continuous = true;
-recognition.interimResults = true;
+// recognition.interimResults = true;
 
 recognition.onstart = () => {
     startButton.textContent = 'Listening...';

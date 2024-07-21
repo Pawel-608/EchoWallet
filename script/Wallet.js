@@ -47,7 +47,7 @@ async function sendEther(amount, person) {
         outputDiv.innerHTML = `
 Sending <strong>${amount}</strong> DEV to <strong>${person}</strong>.<br> 
 Status: <strong>pending</strong><br> 
-<a id="txLink" href="https://moonbase.moonscan.io/tx/${txResponse.hash}">Moonscan Tx</a>
+<a id="txLink" href="https://moonbase.moonscan.io/tx/${txResponse.hash}" target="_blank">Moonscan Tx</a>
 `;
 
 
@@ -55,7 +55,7 @@ Status: <strong>pending</strong><br>
         console.log('Transaction was mined in block', receipt.blockNumber);outputDiv.innerHTML = `
 Sending <strong>${amount}</strong> DEV to <strong>${person}</strong>.<br> 
 Status: <strong>sent</strong><br> 
-<a id="txLink" href="https://moonbase.moonscan.io/tx/${txResponse.hash}">Moonscan Tx</a>
+<a id="txLink" href="https://moonbase.moonscan.io/tx/${txResponse.hash}" target="_blank">Moonscan Tx</a>
 `;
     } catch (error) {
         console.error('Error sending transaction:', error);

@@ -70,6 +70,17 @@ function parsePerson(transcript, person) {
         return "Phil"
     }
 
+    const words = transcript.split(" ")
+    const firstLetter = words[words.length - 1][0]
+
+    if(firstLetter == "d") {
+        return "Dom"
+    }
+
+    if(firstLetter == "p" || firstLetter == "f") {
+        return "Phil"
+    }
+
     console.error({person, transcript})
     throw new Error("Cannot identify person - please try once again")
 }

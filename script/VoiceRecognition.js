@@ -11,6 +11,7 @@ recognition.lang = 'en-GB';
 
 recognition.onstart = () => {
     startButton.textContent = 'Listening...';
+    startButton.classList.add("listening");
 };
 
 
@@ -24,6 +25,7 @@ recognition.onresult = (event) => {
 
 recognition.onend = () => {
     startButton.textContent = 'Start Voice Input';
+    startButton.classList.remove("listening");
 };
 
 startButton.addEventListener('click', () => {

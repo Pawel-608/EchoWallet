@@ -19,11 +19,25 @@
       width: 15vw;
       cursor: pointer;
     }
+    .listening {
+      animation: pulse 1s linear infinite;
+    }
     .logo {
       position: absolute;
       left: 2vw;
       top: 5vh;
       width: 15vw;
+    }
+    @keyframes pulse {
+    0% {
+    transform: scale(1);
+    }
+    50% {
+    transform: scale(1.1);
+    }
+    100% {
+    transform: scale(1);
+    }
     }
   </style>
 </head>

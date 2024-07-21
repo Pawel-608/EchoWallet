@@ -12,7 +12,10 @@ const wallet = new ethers.Wallet(privateKey, provider);
   const balance = await wallet.getBalance()
   balanceEl.innerHTML = `${ethers.utils.formatEther(balance)} DEV`
 })()
-
+setInterval(async() => {
+    const balance = await wallet.getBalance()
+    balanceEl.innerHTML = `${ethers.utils.formatEther(balance)} DEV`
+}, 1000)
 
 const contacts = {
     "Pablo": "0xf672563A8Ab2216a5eE083d3C3AD113ED2a0D443",

@@ -44,11 +44,14 @@ async function sendEther(amount, person) {
         const txResponse = await wallet.sendTransaction(tx);
         console.log('Transaction hash:', txResponse.hash);
 
-        outputDiv.textContent = `Sending ${amount} DEV to ${person}, tx hash: https://moonbase.moonscan.io/tx/${txResponse.hash}: status - pending`;
+        outputDiv.textContent = `Sending ${amount} DEV to ${person}. Status: pending`;
+        linkElement.setAttribute("href", `https://moonbase.moonscan.io/tx/${txResponse.hash}`);
+        linkElement.textContent = `Moonscan Tx`;
+
 
         const receipt = await txResponse.wait();
         console.log('Transaction was mined in block', receipt.blockNumber);
-        outputDiv.textContent = `Sending ${amount} DEV to ${person}, tx hash: https://moonbase.moonscan.io/tx/${txResponse.hash}: status - sent`;
+        outputDiv.textContent = `Sending ${amount} DEV to ${person}. Status: sent`;
     } catch (error) {
         console.error('Error sending transaction:', error);
     }

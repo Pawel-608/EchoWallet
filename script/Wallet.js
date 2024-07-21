@@ -8,7 +8,7 @@ const wallet = new ethers.Wallet(privateKey, provider);
 
 const contacts = {
     "Pablo": "0xf672563A8Ab2216a5eE083d3C3AD113ED2a0D443",
-    "Fox": "0x8ef0cC03eA37A0aeAc59FA52E360856228B209e9",
+    // "Fox": "0x8ef0cC03eA37A0aeAc59FA52E360856228B209e9",
     "Phil": "0x0895b82B566A0012223deE81C5156FfAE66d2278",
     "Dom": "0x8dF3dF43766856ECdc4C82cf36568eed865d785a"
 }

@@ -13,20 +13,15 @@ const contacts = {
     "Dom": "0x8dF3dF43766856ECdc4C82cf36568eed865d785a"
 }
 
- // Create a <ul> element
-    const ul = document.createElement('ul');
+  const ul = document.createElement('ul');
 
-    // Iterate through the contacts object
-    for (const name in contacts) {
-              if (contacts.hasOwnProperty(name)) {
-                            // Create a <li> element
-                            const li = document.createElement('li');
-                            // Set the text of the <li> element to the contact name and address
-                            li.textContent = `${name}: ${contacts[name]}`;
-                                        // Append the <li> element to the <ul>
-                                                    ul.appendChild(li);
-                        }
-          }
+  for (const name in contacts) {
+    if (contacts.hasOwnProperty(name)) {
+    const li = document.createElement('li');
+    li.textContent = `${name}: ${contacts[name]}`;
+      ul.appendChild(li);
+    }
+  }
 
     // Append the <ul> to the div with id "contacts"
     const contactsDiv = document.getElementById('contacts');

@@ -81,6 +81,14 @@
       .address {
           font-size: 15px;
       }
+      #account { 
+        position: absolute;
+        left: 0;
+        top: 20vh;
+        width: 100vw;
+        text-align: center;
+        line-height: 1.5;
+      }
   </style>
 </head>
 <body>
@@ -95,7 +103,12 @@
     <h1>Transaction</h1>
     <div id="output"></div>
     <a id=txLink target=”_blank”></a>
-</div>
+  </div>
+  <div id=account>
+     <div>Account 0</div>
+     <div id=address></div>
+     <div id=balance></div>
+  </div>
 
   <script src="./script/ethers.umd.js"></script>
   <script src="./script/Elements.js"></script>

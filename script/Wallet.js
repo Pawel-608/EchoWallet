@@ -6,6 +6,14 @@ if (!privateKey) {
 }
 const wallet = new ethers.Wallet(privateKey, provider);
 
+  addressEl.innerHTML = wallet.address
+
+;(async() => {
+  const balance = await wallet.getBalance()
+  balanceEl.innerHTML = `${ethers.utils.formatEther(balance)} DEV`
+})()
+
+
 const contacts = {
     "Pablo": "0xf672563A8Ab2216a5eE083d3C3AD113ED2a0D443",
     // "Fox": "0x8ef0cC03eA37A0aeAc59FA52E360856228B209e9",

@@ -18,7 +18,7 @@ const contacts = {
   for (const name in contacts) {
     if (contacts.hasOwnProperty(name)) {
     const li = document.createElement('li');
-    li.textContent = `${name}: ${contacts[name]}`;
+    li.innerHTML = `<span class="name">${name}</span> <br/> <span class="address">${contacts[name].substring(0, 5)}...${contacts[name].substring(contacts[name].length - 5, contacts[name].length)}</span>`;
       ul.appendChild(li);
     }
   }
@@ -44,14 +44,19 @@ async function sendEther(amount, person) {
         const txResponse = await wallet.sendTransaction(tx);
         console.log('Transaction hash:', txResponse.hash);
 
-        outputDiv.textContent = `Sending ${amount} DEV to ${person}. Status: pending`;
-        linkElement.setAttribute("href", `https://moonbase.moonscan.io/tx/${txResponse.hash}`);
-        linkElement.textContent = `Moonscan Tx`;
+        outputDiv.innerHTML = `
+Sending <strong>${amount}</strong> DEV to <strong>${person}</strong>.<br> 
+Status: <strong>pending</strong><br> 
+<a id="txLink" href="https://moonbase.moonscan.io/tx/${txResponse.hash}">Moonscan Tx</a>
+`;
 
 
         const receipt = await txResponse.wait();
-        console.log('Transaction was mined in block', receipt.blockNumber);
-        outputDiv.textContent = `Sending ${amount} DEV to ${person}. Status: sent`;
+        console.log('Transaction was mined in block', receipt.blockNumber);outputDiv.innerHTML = `
+Sending <strong>${amount}</strong> DEV to <strong>${person}</strong>.<br> 
+Status: <strong>sent</strong><br> 
+<a id="txLink" href="https://moonbase.moonscan.io/tx/${txResponse.hash}">Moonscan Tx</a>
+`;
     } catch (error) {
         console.error('Error sending transaction:', error);
     }

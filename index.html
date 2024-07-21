@@ -3,70 +3,99 @@
 <head>
     <title>Voice to Text</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #F2F0E6;
-      position: relative;
-    }
-    .container {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .microphone {
-      width: 15vw;
-      cursor: pointer;
-    }
-    .listening {
-      animation: pulse 1s linear infinite;
-    }
-    .logo {
-      position: absolute;
-      left: 2vw;
-      top: 5vh;
-      width: 15vw;
-    }
-    @keyframes pulse {
-      0% {
-      transform: scale(1);
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+      body {
+          margin: 0;
+          padding: 0;
+          background-color: #F2F0E6;
+          position: relative;
+          font-family: "Roboto", sans-serif;
+          font-weight: 400;
+          font-style: normal;
       }
-      50% {
-      transform: scale(1.13);
+
+      .container {
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
       }
-      100% {
-      transform: scale(1);
+
+      .microphone {
+          width: 15vw;
+          cursor: pointer;
       }
-    }
-    #tx {
-      position: absolute; 
-      right: 0;
-      top: 15vh;
-      width: 20vw;
-    }
-    #contacts {
-      position: absolute; 
-      left: 0;
-      top: 15vh;
-      width: 20vw;
-    }
+
+      .listening {
+          animation: pulse 1s linear infinite;
+      }
+
+      .logo {
+          position: absolute;
+          left: 2vw;
+          top: 5vh;
+          width: 15vw;
+      }
+
+      @keyframes pulse {
+          0% {
+              transform: scale(1);
+          }
+          50% {
+              transform: scale(1.13);
+          }
+          100% {
+              transform: scale(1);
+          }
+      }
+
+      #tx {
+          position: absolute;
+          right: 0;
+          top: 30vh;
+          width: 20vw;
+          text-align: center;
+      }
+
+      #contacts {
+          position: absolute;
+          left: 0;
+          top: 30vh;
+          width: 20vw;
+          text-align: center;
+      }
+      ul {
+          list-style-type: none;
+          padding-inline-start: 0;
+      }
+
+      li {
+          margin-top: 10px;
+      }
+
+      .name{
+          font-size: 22px;
+      }
+      .address {
+          font-size: 15px;
+      }
   </style>
 </head>
 <body>
-  <img src="static/logo.png" alt="logo" class="logo">
+<img src="static/logo.png" alt="logo" class="logo">
   <div class="container">
     <img id=startButton alt="microphone" src="static/mic.png" class="microphone">
   </div>
   <div id=contacts>
-    <h4>Contacts</h4>
+    <h1>Contacts</h1>
   </div>
   <div id=tx>
-    <h4>Transaction</h4>
+    <h1>Transaction</h1>
     <div id="output"></div>
     <a id=txLink target=”_blank”></a>
-  </div>
+</div>
 
   <script src="./script/ethers.umd.js"></script>
   <script src="./script/Elements.js"></script>

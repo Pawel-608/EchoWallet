@@ -7,6 +7,7 @@
       margin: 0;
       padding: 0;
       background-color: #F2F0E6;
+      position: relative;
     }
     .container {
       width: 100vw;
@@ -29,15 +30,27 @@
       width: 15vw;
     }
     @keyframes pulse {
-    0% {
-    transform: scale(1);
+      0% {
+      transform: scale(1);
+      }
+      50% {
+      transform: scale(1.1);
+      }
+      100% {
+      transform: scale(1);
+      }
     }
-    50% {
-    transform: scale(1.1);
+    #output {
+      position: absolute; 
+      right: 0;
+      top: 15vh;
+      width: 20vw;
     }
-    100% {
-    transform: scale(1);
-    }
+    #contacts {
+      position: absolute; 
+      left: 0;
+      top: 15vh;
+      width: 20vw;
     }
   </style>
 </head>
@@ -46,14 +59,12 @@
   <div class="container">
     <img id=startButton alt="microphone" src="static/mic.png" class="microphone">
   </div>
-  <div class="container2">
-    <div class="contacts">
-      <h1>Contacts</h1>
-    </div>
-    <div></div>
-    <div></div>
+  <div id=contacts>
+    <h4>Contacts</h4>
   </div>
-  <div id="output"></div>
+  <div id="output">
+    <h4>Transaction</h4>
+  </div>
 
   <script src="./script/ethers.umd.js"></script>
   <script src="./script/Elements.js"></script>

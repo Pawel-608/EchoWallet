@@ -7,7 +7,7 @@ recognition.grammars.addFromString(grammar1, 1);
 recognition.grammars.addFromString(grammar2, 2);
 recognition.grammars.addFromString(grammar3, 3);
 
-recognition.lang = 'en-US';
+recognition.lang = 'en-GB';
 
 recognition.onstart = () => {
     startButton.textContent = 'Listening...';

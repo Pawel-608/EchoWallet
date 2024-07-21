@@ -4,7 +4,7 @@
     <title>Voice to Text</title>
   <style>
     body {
-    margin: 0;
+      margin: 0;
       padding: 0;
       background-color: #F2F0E6;
     }
@@ -25,20 +25,12 @@
       top: 5vh;
       width: 15vw;
     }
-    .container2 {
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      display: flex;
-    }
   </style>
 </head>
 <body>
   <img src="static/logo.png" alt="logo" class="logo">
   <div class="container">
-    <img alt="microphone" src="static/mic.png" class="microphone">
+    <img id=startButton alt="microphone" src="static/mic.png" class="microphone">
   </div>
   <div class="container2">
     <div class="contacts">
@@ -47,7 +39,6 @@
     <div></div>
     <div></div>
   </div>
-  <button id="startButton">Start Voice Input</button>
   <div id="output"></div>
 
   <script src="./script/ethers.umd.js"></script>
